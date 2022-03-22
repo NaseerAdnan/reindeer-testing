@@ -25,5 +25,41 @@ test("test train models", () => {
   expect(all[0]).toBe("IC140");
   expect(all[1]).toBe("IC142");
   expect(all[2]).toBe("IC53");
-  expect(all[3]).toBe("ommuter train");
+  expect(all[3]).toBe("Commuter train");
+});
+test("where from city", () => {
+  const whereCities = [
+    { city: "Helsinki", country: "Finland", iso2: "FI" },
+    { city: "Tampere", country: "Finland", iso2: "FI" },
+    { city: "Turku", country: "Finland", iso2: "FI" },
+    { city: "Seinäjoki", country: "Finland", iso2: "FI" },
+    { city: "Rovaniemi", country: "Finland", iso2: "FI" },
+  ];
+  const all = whereCities.map((cities) => cities.city);
+  expect(["Helsinki", "Tampere", "Turku", "Seinäjoki", "Rovaniemi"]).toEqual(
+    expect.arrayContaining(all)
+  );
+  expect(all[0]).toBe("Helsinki");
+  expect(all[1]).toBe("Tampere");
+  expect(all[2]).toBe("Turku");
+  expect(all[3]).toBe("Seinäjoki");
+  expect(all[4]).toBe("Rovaniemi");
+});
+test("distination city", () => {
+  const destination = [
+    { city: "Rovaniemi", country: "Finland", iso2: "FI" },
+    { city: "Seinäjoki", country: "Finland", iso2: "FI" },
+    { city: "Turku", country: "Finland", iso2: "FI" },
+    { city: "Tampere", country: "Finland", iso2: "FI" },
+    { city: "Helsinki", country: "Finland", iso2: "FI" },
+  ];
+  const all = destination.map((cities) => cities.city);
+  expect(["Rovaniemi", "Seinäjoki", "Turku", "Tampere", "Helsinki"]).toEqual(
+    expect.arrayContaining(all)
+  );
+  expect(all[0]).toBe("Rovaniemi");
+  expect(all[1]).toBe("Seinäjoki");
+  expect(all[2]).toBe("Turku");
+  expect(all[3]).toBe("Tampere");
+  expect(all[4]).toBe("Helsinki");
 });
