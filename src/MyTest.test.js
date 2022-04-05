@@ -63,3 +63,92 @@ test("distination city", () => {
   expect(all[3]).toBe("Tampere");
   expect(all[4]).toBe("Helsinki");
 });
+
+test("filtering an option", () => {
+  const allItems = [
+    {
+      label: "Alkuoalat",
+      id: "1",
+      menus: [
+        {
+          id: "1",
+          item: "Luomumuna, lehtikaalia & tatteja",
+          ingredient: "Luomumuna, lehtikaalia, tatteja",
+          available: true,
+          country: "Finland",
+          discount: "FI",
+          image:
+            "https://github.com/bikarnap/reindeer-be/blob/main/data/images/lehtikaali.jpg?raw=true",
+          foodChoices: ["Gluteen free"],
+          price: 10,
+        },
+        {
+          id: "2",
+          item: "Kauden Salaatti",
+          ingredient: "",
+          available: true,
+          country: "Finland",
+          discount: "FI",
+          image:
+            "https://github.com/bikarnap/reindeer-be/blob/main/data/images/kauden_salaatti.jpg?raw=true",
+          foodChoices: ["Gluteen free"],
+          price: 10,
+        },
+        {
+          id: "3",
+          item: "Graavisiika",
+          ingredient: "",
+          available: true,
+          country: "Finland",
+          discount: "FI",
+          image:
+            "https://github.com/bikarnap/reindeer-be/blob/main/data/images/graavisiika.jpg?raw=true",
+          foodChoices: ["Lactus free"],
+          price: 10,
+        },
+      ],
+    },
+  ];
+  let arr = [];
+  for (let i = 0; i < allItems.length; i++) {
+    for (let j = 0; j < allItems[i].menus.length; j++) {
+      arr.push(allItems[i].menus[j]);
+    }
+  }
+
+  console.log(arr);
+  const all =
+    arr &&
+    arr.map((vals) => {
+      vals;
+    });
+  const val = allItems.map((food) => food.foodChoices);
+
+  //console.log(all);
+  //expect(all.item).toEqual(expect.arrayContaining(all));
+  //expect(all.id).toEqual("1");
+  // expect(all).toEqual(expect.arrayContaining(["Kauden"]));
+  //expect(all[1]).toBe("Seinäjoki");
+  expect([{ foodChoices: ["Luctus free"] }]).toEqual(
+    expect.objectContaining([
+      { foodChoices: expect.arrayContaining(["Luctus free"]) },
+    ])
+  );
+
+  expect([{ foodChoices: ["Gluteen free"] }]).toEqual(
+    expect.objectContaining([
+      { foodChoices: expect.arrayContaining(["Gluteen free"]) },
+    ])
+  );
+  // expect([{ foodChoices: [1] }]).toEqual(
+  //   expect.objectContaining([{ foodChoices: expect.arrayContaining([1]) }])
+  // );
+
+  //expect(val.foodChoices[0]).toBe("Gluton free");
+
+  // expect("Finland").toEqual(
+  //   expect.arrayContaining([expect.objectContaining(allItems.country)])
+  // );
+
+  //expect(allItems.country[0]).toBe("Finland");
+});

@@ -111,6 +111,10 @@ function FoodContent({ searchField }) {
     }
   };
 
+
+  console.log("allItems",allItems)
+
+  
   const onMouseEnter = () => {
     setMyStyle(true);
   };
